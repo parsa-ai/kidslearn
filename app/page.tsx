@@ -1,10 +1,13 @@
-import React from 'react'
+import AgeFilters from './components/pages/home/AgeFilters'
+import SearchInput from './components/pages/home/SearchInput'
 
 function Home() {
   return (
     <>
-      <div className='bg-secondary-700'>Home</div>
-      <div className='bg-primary-700'>Home</div>
+      <article className="w-full mt-2 mb-4 flex flex-col gap-4">
+        <SearchInput />
+        <AgeFilters />
+      </article>
     </>
   )
 }
