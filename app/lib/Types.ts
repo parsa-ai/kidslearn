@@ -25,3 +25,18 @@ export interface IAge {
     age: number,
     color: Color,
 } 
+
+export type Question = {
+  q: string;
+  choices: string[];
+  answerIndex: number;
+};
+
+export type Lesson = {
+  id: string;
+  title: string;
+  ageMin: number;
+  ageMax: number;
+  icon: string;
+  questions: Question[];
+};
