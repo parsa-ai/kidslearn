@@ -1,50 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --primary: hsl(3, 76%, 38%);
-  --secondary: hsl(205, 88%, 30%);
+  --primary: hsl(206, 64%, 60%);
+  --secondary: hsl(44, 82%, 70%);
+  --dark: hsl(233, 45%, 11%);
 
-  --primary-50: hsl(from var(--primary) h calc(s * 0.177) 91%);
-  --primary-100: hsl(from var(--primary) h calc(s * 0.306) 85%);
-  --primary-200: hsl(from var(--primary) h calc(s * 0.403) 75%);
-  --primary-300: hsl(from var(--primary) h calc(s * 0.419) 67%);
-  --primary-400: hsl(from var(--primary) h calc(s * 0.419) 60%);
-  --primary-500: hsl(from var(--primary) h calc(s * 0.484) 48%);
-  --primary-600: hsl(from var(--primary) h calc(s * 0.565) 44%);
-  --primary-800: hsl(from var(--primary) h calc(s * 1.113) 23%);
-  --primary-900: hsl(from var(--primary) h calc(s * 1.194) 13%);
-
-  --secondary-50: hsl(from var(--secondary) h calc(s * 1.268) 97%);
-  --secondary-100: hsl(from var(--secondary) h calc(s * 1.304) 94%);
-  --secondary-200: hsl(from var(--secondary) h calc(s * 1.321) 89%);
-  --secondary-300: hsl(from var(--secondary) h calc(s * 1.286) 82%);
-  --secondary-400: hsl(from var(--secondary) h calc(s * 1.232) 71%);
-  --secondary-500: hsl(from var(--secondary) h calc(s * 1.161) 60%);
-  --secondary-600: hsl(from var(--secondary) h calc(s * 0.982) 48%);
-  --secondary-800: hsl(from var(--secondary) h calc(s * 0.946) 35%);
-  --secondary-900: hsl(from var(--secondary) h calc(s * 0.839) 31%);
 }
 
 @theme {
-  --color-primary-50: hsl(from var(--primary) h calc(s * 0.177) 91%);
-  --color-primary-100: hsl(from var(--primary) h calc(s * 0.306) 85%);
-  --color-primary-200: hsl(from var(--primary) h calc(s * 0.403) 75%);
-  --color-primary-300: hsl(from var(--primary) h calc(s * 0.419) 67%);
-  --color-primary-400: hsl(from var(--primary) h calc(s * 0.419) 60%);
-  --color-primary-500: hsl(from var(--primary) h calc(s * 0.484) 48%);
-  --color-primary-600: hsl(from var(--primary) h calc(s * 0.565) 44%);
-  --color-primary-700: var(--primary);
-  --color-primary-800: hsl(from var(--primary) h calc(s * 1.113) 23%);
-  --color-primary-900: hsl(from var(--primary) h calc(s * 1.194) 13%);
 
-  --color-secondary-50: hsl(from var(--secondary) h calc(s * 1.268) 97%);
-  --color-secondary-100: hsl(from var(--secondary) h calc(s * 1.304) 94%);
-  --color-secondary-200: hsl(from var(--secondary) h calc(s * 1.321) 89%);
-  --color-secondary-300: hsl(from var(--secondary) h calc(s * 1.286) 82%);
-  --color-secondary-400: hsl(from var(--secondary) h calc(s * 1.232) 71%);
-  --color-secondary-500: hsl(from var(--secondary) h calc(s * 1.161) 60%);
-  --color-secondary-600: hsl(from var(--secondary) h calc(s * 0.982) 48%);
-  --color-secondary-700: var(--secondary);
-  --color-secondary-800: hsl(from var(--secondary) h calc(s * 0.946) 35%);
-  --color-secondary-900: hsl(from var(--secondary) h calc(s * 0.839) 31%);
+  --color-primary-light: hsl(from var(--primary) h calc(s * 1.36) calc(l * 1.4 ));
+  --color-primary: var(--primary);
+  --color-primary-dark: hsl(from var(--primary) h calc(s * 0.7) calc(l * 0.15));
+  --color-secondary: var(--secondary);
+
 }
