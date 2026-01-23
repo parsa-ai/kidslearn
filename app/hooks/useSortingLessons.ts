@@ -6,9 +6,7 @@ export function useSortingLessons(lessons: Lesson[], searchTitle: string, select
             .toLowerCase()
             .includes(searchTitle.toLowerCase())
 
-        const matchAge =
-            selectedAge >= lesson.ageMin &&
-            selectedAge <= lesson.ageMax
+        const matchAge = (selectedAge >= lesson.ageMin && selectedAge <= lesson.ageMax ) || selectedAge == 0
 
         return matchTitle && matchAge
     })

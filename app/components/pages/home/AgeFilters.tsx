@@ -2,14 +2,10 @@
 import Button from "@/app/components/ui/Button"
 import { useLessonsStore } from "@/app/context/useLessonsStore";
 import { AgesList } from "@/app/lib/data/AgesList";
-import { useState } from "react";
-
 
 function AgeFilters() {
     const activeAge = useLessonsStore((s) => s.selectedAge)
     const setActiveAge = useLessonsStore((s) => s.setSelectedAge)
-
-    // const [activeAge, setActiveAge] = useState<number>(3);
 
     return (
         <div>
@@ -25,7 +21,7 @@ function AgeFilters() {
                                 onClick={() => setActiveAge(item.age)}
                                 color={item.color}
                             >
-                                {item.age}
+                                {item.age != 0 ? item.age : "همه"}
                             </Button>
                         </li>
                     )

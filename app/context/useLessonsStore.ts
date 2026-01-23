@@ -31,7 +31,7 @@ export const useLessonsStore = create<LessonsState>()(
       sorted: [],
 
       searchTitle: "",
-      selectedAge: 3, 
+      selectedAge: 0, 
 
       stars: {},
 
