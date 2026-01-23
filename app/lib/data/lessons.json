@@ -1,73 +1,181 @@
 [
   {
     "id": "count-to-5",
-    "title": "Count to 5",
+    "title": "شمارش تا ۵",
     "ageMin": 3,
     "ageMax": 5,
-    "icon": "•",
+    "icon": "🔢",
     "questions": [
       {
-        "q": "How many apples? •••",
-        "choices": ["2", "3", "4"],
+        "q": "چند تا سیب هست؟ 🍎🍎🍎",
+        "choices": [
+          "۲",
+          "۳",
+          "۴"
+        ],
         "answerIndex": 1
       },
       {
-        "q": "What comes after 4?",
-        "choices": ["3", "5", "6"],
+        "q": "بعد از عدد ۴ چی میاد؟",
+        "choices": [
+          "۳",
+          "۵",
+          "۶"
+        ],
         "answerIndex": 1
       },
       {
-        "q": "Count the stars: **",
-        "choices": ["1", "2", "3"],
+        "q": "ستاره‌ها رو بشمار ⭐⭐",
+        "choices": [
+          "۱",
+          "۲",
+          "۳"
+        ],
         "answerIndex": 1
       }
     ]
   },
   {
     "id": "colors-basic",
-    "title": "Basic Colors",
+    "title": "رنگ‌های پایه",
     "ageMin": 3,
     "ageMax": 6,
-    "icon": "®",
+    "icon": "🎨",
     "questions": [
       {
-        "q": "Bananas are..",
-        "choices": ["Blue", "Yellow", "Red"],
+        "q": "موز چه رنگیه؟ 🍌",
+        "choices": [
+          "آبی",
+          "زرد",
+          "قرمز"
+        ],
         "answerIndex": 1
       },
       {
-        "q": "Grass is..",
-        "choices": ["Green", "Purple", "Orange"],
+        "q": "چمن چه رنگیه؟ 🌱",
+        "choices": [
+          "سبز",
+          "بنفش",
+          "نارنجی"
+        ],
         "answerIndex": 0
       },
       {
-        "q": "Tomatoes are..",
-        "choices": ["Black", "Brown", "Red"],
+        "q": "گوجه‌فرنگی چه رنگیه؟ 🍅",
+        "choices": [
+          "مشکی",
+          "قهوه‌ای",
+          "قرمز"
+        ],
         "answerIndex": 2
       }
     ]
   },
   {
     "id": "animals-sounds",
-    "title": "Animal Sounds",
+    "title": "صدای حیوانات",
     "ageMin": 3,
     "ageMax": 6,
-    "icon": "•",
+    "icon": "🐾",
     "questions": [
       {
-        "q": "A cow says...",
-        "choices": ["Moo", "Baa", "Neigh"],
+        "q": "صدای گاو چیه؟ 🐄",
+        "choices": [
+          "موو",
+          "بع‌بع",
+          "شیهه"
+        ],
         "answerIndex": 0
       },
       {
-        "q": "A sheep says..",
-        "choices": ["Oink", "Baa", "Roar"],
+        "q": "صدای گوسفند چیه؟ 🐑",
+        "choices": [
+          "قوقولی",
+          "بع‌بع",
+          "غرر"
+        ],
         "answerIndex": 1
       },
       {
-        "q": "A horse says..",
-        "choices": ["Tweet", "Neigh", "Hiss"],
+        "q": "صدای اسب چیه؟ 🐎",
+        "choices": [
+          "جیک‌جیک",
+          "شیهه",
+          "هیس"
+        ],
         "answerIndex": 1
+      }
+    ]
+  },
+  {
+    "id": "body-parts",
+    "title": "اعضای بدن",
+    "ageMin": 4,
+    "ageMax": 8,
+    "icon": "🧍",
+    "questions": [
+      {
+        "q": "با کدوم راه می‌ریم؟",
+        "choices": [
+          "دست",
+          "پا",
+          "گوش"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "q": "با کدوم می‌بینیم؟ 👀",
+        "choices": [
+          "بینی",
+          "چشم",
+          "دهان"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "q": "با کدوم می‌شنویم؟ 👂",
+        "choices": [
+          "گوش",
+          "چشم",
+          "دست"
+        ],
+        "answerIndex": 0
+      }
+    ]
+  },
+  {
+    "id": "vehicles",
+    "title": "وسیله‌های نقلیه",
+    "ageMin": 5,
+    "ageMax": 8,
+    "icon": "🚗",
+    "questions": [
+      {
+        "q": "کدوم توی خیابون حرکت می‌کنه؟",
+        "choices": [
+          "ماشین",
+          "قایق",
+          "هواپیما"
+        ],
+        "answerIndex": 0
+      },
+      {
+        "q": "کدوم پرواز می‌کنه؟ ✈️",
+        "choices": [
+          "قطار",
+          "هواپیما",
+          "دوچرخه"
+        ],
+        "answerIndex": 1
+      },
+      {
+        "q": "کدوم روی ریل حرکت می‌کنه؟ 🚆",
+        "choices": [
+          "ماشین",
+          "اتوبوس",
+          "قطار"
+        ],
+        "answerIndex": 2
       }
     ]
   }
