@@ -8,21 +8,17 @@ import PlayIcon from '../../icons/PlayIcon';
 
 function Courses() {
   const lessons = useLessonsStore((s) => s.sorted)
-
-
   return (
-    <article className='flex flex-col gap-4'>
+    <article className='flex flex-col gap-4 overflow-y-auto h-[65vh]'>
       {lessons.map((item) => <Course key={item.id} data={item} />)}
     </article>
   )
 }
 
 function Course({ data }: { data: Lesson }) {
-  const addStar = useLessonsStore((s) => s.addStar)
   const resetLessonStars = useLessonsStore((s) => s.resetLessonStars)
   const stars = useLessonsStore((s) => s.stars)[data.id]
-
-  return <div className='w-full flex px3 p-4 border border-primary-light rounded-3xl h-30 shadow '>
+  return <div className='w-full flex px3 p-4 border border-primary-light rounded-3xl min-h-30 shadow '>
     <div className='w-full flex flex-col justify-between'>
       <p className='flex items-center gap-2 '>
         <span className='h-4 text-2xl/[80%] '>{data.icon}</span>

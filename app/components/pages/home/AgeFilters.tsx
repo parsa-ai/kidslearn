@@ -1,12 +1,16 @@
 "use client"
 import Button from "@/app/components/ui/Button"
+import { useLessonsStore } from "@/app/context/useLessonsStore";
 import { AgesList } from "@/app/lib/data/AgesList";
 import { useState } from "react";
 
 
 function AgeFilters() {
-    const [activeAge, setActiveAge] = useState<number>(3);
-    
+    const activeAge = useLessonsStore((s) => s.selectedAge)
+    const setActiveAge = useLessonsStore((s) => s.setSelectedAge)
+
+    // const [activeAge, setActiveAge] = useState<number>(3);
+
     return (
         <div>
             <span className="text-xs text-primary-dark">مناسب کودک چند ساله؟</span>
