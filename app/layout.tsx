@@ -3,6 +3,7 @@ import "./globals.css";
 import { iranSansDn } from "./lib/font";
 import LogoIcon from "./components/icons/LogoIcon";
 import { LessonsInitializer } from "./context/LessonsInitializer";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "کیدزلرن | صفحه اصلی",
@@ -17,11 +18,13 @@ export default function RootLayout({
   return (
     <html lang="fa" dir="rtl">
       <body className={`overflow-hidden ${iranSansDn.className} `}>
-      <LessonsInitializer/>
+        <LessonsInitializer />
         <main className="max-w-xl mx-auto h-dvh min-h-dvh outline">
-          <header className="w-full h-14 gap-2 z-10 relative flex items-center shadow shadow-primary-light px-4">
-            <LogoIcon className="fill-primary w-5" />
-            <h1 className="text-lg font-bold text-primary">کیدزلــــرن</h1>
+          <header className="w-full h-14 shadow shadow-primary-light px-4 z-10 relative">
+            <Link href='/' className="h-full w-fit gap-2  flex items-center ">
+              <LogoIcon className="fill-primary w-5" />
+              <h1 className="text-lg font-bold text-primary">کیدزلــــرن</h1>
+            </Link>
 
           </header>
           <section className="w-full h-[90dvh] overflow-scroll">
