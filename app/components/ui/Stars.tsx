@@ -11,12 +11,11 @@ function Stars({ quantity, className = "" }: { quantity: number, className?: str
     if (quantityDeactive < 0) {
         quantityDeactive = 0
     }
-    console.log(quantity, quantityDeactive);
 
     return (
         <div className={`flex gap-1 ${className}`}>
-            {Array.from({ length: quantityDeactive }, () => <Star />)}
-            {Array.from({ length: quantity }, () => <Star isActive />)}
+            {Array.from({ length: quantityDeactive }, (v,i) => <Star key={i} />)}
+            {Array.from({ length: quantity }, (v, i) => <Star isActive  key={i}/>)}
         </div>
     )
 }
