@@ -19,6 +19,9 @@
 html,
 body {
   overflow: hidden;
-  height: 100%;
+  height: 100%; 
   overscroll-behavior: none;
+} 
+.cnt{
+  @apply px-4;
 }

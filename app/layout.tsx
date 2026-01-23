@@ -18,13 +18,13 @@ export default function RootLayout({
     <html lang="fa" dir="rtl">
       <body className={`overflow-hidden ${iranSansDn.className} `}>
       <LessonsInitializer/>
-        <main className="max-w-xl mx-auto h-full min-h-dvh outline">
-          <header className="w-full h-14 gap-2 flex items-center shadow shadow-primary-light px-4">
+        <main className="max-w-xl mx-auto h-dvh min-h-dvh outline">
+          <header className="w-full h-14 gap-2 z-10 relative flex items-center shadow shadow-primary-light px-4">
             <LogoIcon className="fill-primary w-5" />
             <h1 className="text-lg font-bold text-primary">کیدزلــــرن</h1>
 
           </header>
-          <section className="w-full p-4">
+          <section className="w-full h-[90dvh] overflow-scroll">
             {children}
           </section>
         </main>
