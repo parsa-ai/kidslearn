@@ -9,9 +9,16 @@
 
 @theme {
 
-  --color-primary-light: hsl(from var(--primary) h calc(s * 1.36) calc(l * 1.4 ));
+  --color-primary-light: hsl(from var(--primary) h calc(s * 1.36) calc(l * 1.4));
   --color-primary: var(--primary);
   --color-primary-dark: hsl(from var(--primary) h calc(s * 0.7) calc(l * 0.15));
   --color-secondary: var(--secondary);
 
+}
+
+html,
+body {
+  overflow: hidden;
+  height: 100%;
+  overscroll-behavior: none;
 }
