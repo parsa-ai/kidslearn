@@ -19,7 +19,7 @@ type LessonsState = {
   setSelectedAge: (age: number) => void;
 
   getLessonStars: (lessonId: string) => number;
-  addStar: (lessonId: string) => void;
+  addStar: (lessonId: string , quantity : number) => void;
   resetLessonStars: (lessonId: string) => void;
 
 };
@@ -45,11 +45,11 @@ export const useLessonsStore = create<LessonsState>()(
         return get().stars[lessonId] ?? 0;
       },
 
-      addStar: (lessonId) =>
+      addStar: (lessonId , quantity) =>
         set((state) => ({
           stars: {
             ...state.stars,
-            [lessonId]: (state.stars[lessonId] ?? 0) + 1,
+            [lessonId]: quantity,
           },
         })),
 

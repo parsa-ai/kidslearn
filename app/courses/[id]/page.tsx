@@ -1,7 +1,7 @@
 "use client"
 
-import { useMemo, useState } from "react"
-import { useParams } from "next/navigation"
+import { useMemo, useRef, useState } from "react"
+import { useParams, useRouter } from "next/navigation"
 import Link from "next/link"
 import { ChevronLeft } from "lucide-react"
 
@@ -13,10 +13,15 @@ import { Color } from "@/app/lib/Types"
 
 function CoursePage() {
   const { id } = useParams<{ id: string }>()
+
   const lessons = useLessonsStore((s) => s.lessons)
   const selectedAge = useLessonsStore((s) => s.selectedAge)
+  const addStar = useLessonsStore((s) => s.addStar)
 
   const [questionIndex, setQuestionIndex] = useState(0)
+  const correctAnswer = useRef([0, 0, 0])
+
+  const router = useRouter()
 
   const lesson = useMemo(
     () => lessons.find((l) => l.id === id),
@@ -29,7 +34,6 @@ function CoursePage() {
     () => AgesList.find((a) => a.age === selectedAge)?.color ?? "gray",
     [selectedAge]
   )
-
 
   if (!lessons.length) {
     return (
@@ -49,7 +53,24 @@ function CoursePage() {
       </div>
     )
   }
-
+  function handelSubmit(choeseI: number) {
+    if (!lesson || !question) return;
+    if (choeseI == question.answerIndex) {
+      correctAnswer.current[questionIndex] = 1
+      alert("nice")
+    }
+    else {
+      correctAnswer.current[questionIndex] = 0
+      alert("wrong")
+    }
+    if (lesson.questions.length - 1 > questionIndex) {
+      setQuestionIndex(questionIndex + 1)
+    }
+    else {
+      addStar(lesson.id, correctAnswer.current.filter((i) => i == 1).length)
+      router.push('/')
+    }
+  }
   return (
     <article className="cnt py-6 h-full flex flex-col gap-5">
       <header className="flex justify-between items-center">
@@ -95,6 +116,7 @@ function CoursePage() {
                   color={courseColor}
                   isActive="active"
                   className="w-full h-12 text-2xl"
+                  onClick={() => handelSubmit(i)}
                 >
                   {choice}
                 </Button>
@@ -126,7 +148,7 @@ function Step({
     <>
       {index > 0 && (
         <Div
-          className="w-full h-[0.5px]"
+          className="w-full h-[0.5px] relative -z-20"
           color={isActive ? color : "gray"}
           isActive="active"
         />
@@ -135,7 +157,7 @@ function Step({
         onClick={onClick}
         color={isActive ? color : "gray"}
         isActive={isActive ? "active" : "deactive"}
-        className={`min-w-12 h-6 text-sm ${isActive ? "border" : ""}`}
+        className={`min-w-12 h-6 text-sm  ${isActive ? "border" : "bg-white"}`}
       >
         {index + 1}
       </Button>
