@@ -11,7 +11,9 @@ import { useLessonsStore } from "@/app/context/useLessonsStore"
 import { AgesList } from "@/app/lib/data/AgesList"
 import { Color } from "@/app/lib/Types"
 
-function CoursePage() {
+type ModalType = "done" | "incorect" | "corect" | "none"
+
+export default function CoursePage() {
   const { id } = useParams<{ id: string }>()
 
   const resetLessonStars = useLessonsStore((s) => s.resetLessonStars)
@@ -20,9 +22,11 @@ function CoursePage() {
   const addStar = useLessonsStore((s) => s.addStar)
 
   const [questionIndex, setQuestionIndex] = useState(0)
+  const [modalMode, setModalMode] = useState<ModalType>("none")
+  const [lastCorrectAnswer, setLastCorrectAnswer] = useState<string | null>(null)
+
   const correctAnswer = useRef([0, 0, 0])
 
-  const router = useRouter()
 
   const lesson = useMemo(
     () => lessons.find((l) => l.id === id),
@@ -36,9 +40,9 @@ function CoursePage() {
     [selectedAge]
   )
 
-  useEffect(()=>{
+  useEffect(() => {
     resetLessonStars(id)
-  },[])
+  }, [])
 
   if (!lessons.length) {
     return (
@@ -60,24 +64,38 @@ function CoursePage() {
   }
   function handelSubmit(choeseI: number) {
     if (!lesson || !question) return;
-    if (choeseI == question.answerIndex) {
-      correctAnswer.current[questionIndex] = 1
-      alert("nice")
+
+    const isCorrect = choeseI === question.answerIndex
+    correctAnswer.current[questionIndex] = isCorrect ? 1 : 0
+
+    if (!isCorrect) {
+      setLastCorrectAnswer(question.choices[question.answerIndex])
+    } else {
+      setLastCorrectAnswer(null)
     }
-    else {
-      correctAnswer.current[questionIndex] = 0
-      alert("wrong")
-    }
-    if (lesson.questions.length - 1 > questionIndex) {
-      setQuestionIndex(questionIndex + 1)
-    }
-    else {
-      addStar(lesson.id, correctAnswer.current.filter((i) => i == 1).length)
-      router.push('/')
+
+    setModalMode(isCorrect ? "corect" : "incorect")
+
+    if (questionIndex === lesson.questions.length - 1) {
+      const stars = correctAnswer.current.filter((i) => i === 1).length
+      addStar(lesson.id, stars)
     }
   }
+
   return (
     <article className="cnt py-6 h-full flex flex-col gap-5">
+      {modalMode !== "none" && (
+        <Modal
+          modalMode={modalMode}
+          setModalMode={setModalMode}
+          isLast={questionIndex === lesson.questions.length - 1}
+          onNext={() => setQuestionIndex((i) => i + 1)}
+          correctAnswer={lastCorrectAnswer}
+          totalCorrect={correctAnswer.current.filter((i) => i === 1).length}
+          totalQuestions={lesson.questions.length}
+        />
+      )}
+
       <header className="flex justify-between items-center">
         <h1 className="text-xl font-bold text-primary-dark/80 flex items-center gap-3">
           <span>{lesson.icon}</span>
@@ -134,8 +152,6 @@ function CoursePage() {
   )
 }
 
-export default CoursePage
-
 function Step({
   index,
   activeIndex,
@@ -168,5 +184,106 @@ function Step({
       </Button>
 
     </>
+  )
+}
+
+function Modal({
+  modalMode,
+  setModalMode,
+  isLast,
+  onNext,
+  correctAnswer,
+  totalCorrect,
+  totalQuestions,
+}: {
+  modalMode: ModalType
+  setModalMode: (mode: ModalType) => void
+  isLast: boolean
+  onNext: () => void
+  correctAnswer: string | null
+  totalCorrect: number
+  totalQuestions: number
+}) {
+  const router = useRouter()
+
+  const BaseStyle =
+    "w-dvw h-dvh backdrop-blur-xl absolute inset-0 z-50 flex justify-center items-center cnt"
+
+  const ModeStyle: Record<
+    ModalType,
+    { bg: string; color: Color | undefined; title: string }
+  > = {
+    none: { bg: "", color: undefined, title: "" },
+    corect: {
+      bg: "bg-green-500/20",
+      color: "green",
+      title: "درست جواب دادی :)",
+    },
+    incorect: {
+      bg: "bg-red-500/20",
+      color: "red",
+      title: "غلط بود :(",
+    },
+    done: {
+      bg: "bg-yellow-500/20",
+      color: "yellow",
+      title: "تموووم شد 🦦",
+    },
+  }
+
+  function handleClose() {
+    if (modalMode === "corect" || modalMode === "incorect") {
+      if (isLast) {
+        setModalMode("done")
+      } else {
+        setModalMode("none")
+        onNext()
+      }
+      return
+    }
+
+    if (modalMode === "done") {
+      router.push("/")
+    }
+  }
+
+  return (
+    <div className={`${BaseStyle} ${ModeStyle[modalMode].bg}`}>
+      <Div
+        className="w-full max-w-md rounded-3xl! cnt py-6 px-4 flex flex-col gap-4 items-center "
+        color={ModeStyle[modalMode].color}
+        isActive="active"
+      >
+        <h2 className="font-bold">
+          {ModeStyle[modalMode].title}
+        </h2>
+
+        {modalMode === "incorect" && correctAnswer && (
+          <p className="text-xl">
+            جواب درست
+            {" "}<span className="font-bold underline">
+              {correctAnswer} 
+            </span> {" "}
+         بود
+          </p>
+        )}
+
+        {modalMode === "done" && (
+          <p className="text-2xl font-bold text-center">
+            {totalCorrect}  از {totalQuestions} تا سوال رو درست جواب دادی 👏
+          </p>
+        )}
+
+        <Button
+          color={ModeStyle[modalMode].color}
+          isActive="active"
+          onClick={handleClose}
+          className="flex underline text-xl items-center"
+          
+        >
+          {modalMode === "done" ? "بازگشت به خانه" : modalMode ==="corect" ? "عالی بود، ادامه بده" : "اشکال نداره، ادامه بده"} <ChevronLeft/>
+        </Button>
+      </Div>
+    </div>
   )
 }
