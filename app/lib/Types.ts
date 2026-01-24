@@ -1,4 +1,4 @@
-export type Color = "blue" | "orange" | "red" | "green" | "yellow" | "purple";
+export type Color = "blue" | "orange" | "red" | "green" | "yellow" | "purple" | "gray";
 export type IsActive = "active" | "deactive";
 
 export interface Colors {
@@ -8,6 +8,7 @@ export interface Colors {
     green: string,
     yellow: string,
     purple: string,
+    gray: string,
 }
 
 export interface ColorsObj {
