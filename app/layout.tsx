@@ -27,7 +27,7 @@ export default function RootLayout({
             </Link>
 
           </header>
-          <section className="w-full h-[90dvh] overflow-scroll">
+          <section className="w-full h-[90dvh] overflow-y-auto">
             {children}
           </section>
         </main>

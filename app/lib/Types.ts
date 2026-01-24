@@ -19,6 +19,11 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   color?: Color;
   isActive?: IsActive;
 }
+export type DivProps = React.HTMLAttributes<HTMLDivElement> & {
+  color?: Color;
+  isActive?: IsActive;
+}
+
 
 export interface IAge {
     id: number,
