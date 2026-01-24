@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo, useRef, useState } from "react"
+import { useEffect, useMemo, useRef, useState } from "react"
 import { useParams, useRouter } from "next/navigation"
 import Link from "next/link"
 import { ChevronLeft } from "lucide-react"
@@ -14,6 +14,7 @@ import { Color } from "@/app/lib/Types"
 function CoursePage() {
   const { id } = useParams<{ id: string }>()
 
+  const resetLessonStars = useLessonsStore((s) => s.resetLessonStars)
   const lessons = useLessonsStore((s) => s.lessons)
   const selectedAge = useLessonsStore((s) => s.selectedAge)
   const addStar = useLessonsStore((s) => s.addStar)
@@ -34,6 +35,10 @@ function CoursePage() {
     () => AgesList.find((a) => a.age === selectedAge)?.color ?? "gray",
     [selectedAge]
   )
+
+  useEffect(()=>{
+    resetLessonStars(id)
+  },[])
 
   if (!lessons.length) {
     return (

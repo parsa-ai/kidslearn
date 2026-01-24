@@ -5,7 +5,7 @@ import SearchInput from './components/pages/home/SearchInput'
 function Home() {
   return (
     <>
-      <article className="w-full pb-4 flex flex-col gap-4 border-b border-dashed border-primary/40 sticky top-0 bg-white cnt pt-4">
+      <article className="z-30 w-full pb-4 flex flex-col gap-4 border-b border-dashed border-primary/40 sticky top-0 bg-white cnt pt-4">
         <SearchInput />
         <AgeFilters />
       </article>

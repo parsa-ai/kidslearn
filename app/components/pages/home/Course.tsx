@@ -5,12 +5,12 @@ import Stars from "../../ui/Stars"
 import Link from "next/link"
 import PlayIcon from "../../icons/PlayIcon"
 import Div from "../../ui/Div"
+import { RefreshCwIcon } from "lucide-react"
 
 export default function Course({ data, CourseColor }: { data: Lesson, CourseColor: Color }) {
-  const resetLessonStars = useLessonsStore((s) => s.resetLessonStars)
   const stars = useLessonsStore((s) => s.stars)[data.id]
   return (
-    <Div color={CourseColor} className='w-full bg-white flex p-3  rounded-3xl! min-h-32 shadow flex-col justify-between'>
+    <Div color={CourseColor} className=' w-full bg-white flex p-3  rounded-3xl! min-h-32 shadow flex-col justify-between'>
       <div className='flex'>
         <div className='flex justify-center items-center py-2 ml-3'>
           <span className='h-4 text-2xl/[80%]  '>{data.icon}</span>
@@ -23,12 +23,13 @@ export default function Course({ data, CourseColor }: { data: Lesson, CourseColo
 
         </div>
         <div className='w-full flex flex-col justify-between gap-5 items-end '>
-          <Stars quantity={stars} className='flex justify-end' />
-
+          {stars >= 3 ? <Div className="w-fit px-3 opacity-60 h-8 flex justify-center items-center outline-0 font-bold text-sm" isActive="active" color={CourseColor}>کامل شد {":)"}</Div> : <Stars quantity={stars} className='flex justify-end' />}
         </div>
       </div>
       <Link href={`/courses/${data.id}`} className='w-full'>
-        <Button className='w-full h-8 px-4 text-xs items-center flex justify-center gap-1 fill-white' onClick={() => { resetLessonStars(data.id) }} isActive='active' color={CourseColor}><PlayIcon className='w-5' />شروع کن</Button>
+        <Button className='w-full h-8 px-4 text-xs items-center flex justify-center gap-1 fill-white' isActive='active' color={CourseColor}>
+          {stars > 0 ? <><RefreshCwIcon className='w-4' /> از اول</> : <><PlayIcon className='w-5' />شروع کن</>}
+        </Button>
       </Link>
     </Div>
   )
