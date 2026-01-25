@@ -14,7 +14,7 @@ function Stars({ quantity, className = "" }: { quantity: number, className?: str
     }
 
     return (
-        <div className={`flex gap-1.5 h-8 items-center justify-center rounded-2xl w-fit px-3 border border-yellow-500/30  ${className}`}>
+        <div className={`flex gap-1.5 h-8 items-center justify-center rounded-2xl w-fit px-3 border border-yellow-500/30 bg-white/90 ${className}`}>
             {Array.from({ length: quantityDeactive }, (v, i) => <StarIcon className="w-6 h-6 fill-yellow-500/30 " key={i} />)}
             {Array.from({ length: quantity }, (v, i) => <StarIcon className="w-6 h-6 fill-yellow-500 " key={i} />)}
         </div>

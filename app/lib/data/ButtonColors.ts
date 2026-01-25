@@ -11,12 +11,12 @@ export const ButtonColors: ColorsObj = {
         purple: "shadow-lg outline-purple-500 shadow-purple-500/30 bg-purple-500 text-purple-50"
     },
     deactive: {
-        blue: "outline outline-blue-500 text-blue-500",
-        gray: "outline outline-gray-300 text-gray-300",
-        orange: "outline outline-orange-500 text-orange-500",
-        red: "outline outline-red-500 text-red-500",
-        green: "outline outline-green-500 text-green-500",
-        yellow: "outline outline-yellow-500 text-yellow-500",
-        purple: "outline outline-purple-500 text-purple-500"
+        blue: "outline outline-blue-500 text-blue-500 bg-blue-500/5",
+        gray: "outline outline-gray-300 text-gray-300 bg-gray-300/5",
+        orange: "outline outline-orange-500 text-orange-500 bg-orange-500/5",
+        red: "outline outline-red-500 text-red-500 bg-red-500/5",
+        green: "outline outline-green-500 text-green-500 bg-green-500/5 ",
+        yellow: "outline outline-yellow-500 text-yellow-500 bg-yellow-500/5",
+        purple: "outline outline-purple-500 text-purple-500 bg-purple-500/5"
     }
 }
