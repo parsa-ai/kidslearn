@@ -1,19 +1,21 @@
 export type Color = "blue" | "orange" | "red" | "green" | "yellow" | "purple" | "gray";
 export type IsActive = "active" | "deactive";
+export type ModalType = "done" | "incorect" | "corect" | "none";
+
 
 export interface Colors {
-    blue: string,
-    orange: string,
-    red: string,
-    green: string,
-    yellow: string,
-    purple: string,
-    gray: string,
+  blue: string,
+  orange: string,
+  red: string,
+  green: string,
+  yellow: string,
+  purple: string,
+  gray: string,
 }
 
 export interface ColorsObj {
-    active: Colors,
-    deactive: Colors,
+  active: Colors,
+  deactive: Colors,
 }
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -27,10 +29,10 @@ export type DivProps = React.HTMLAttributes<HTMLDivElement> & {
 
 
 export interface IAge {
-    id: number,
-    age: number,
-    color: Color,
-} 
+  id: number,
+  age: number,
+  color: Color,
+}
 
 export type Question = {
   q: string;
@@ -46,3 +48,10 @@ export type Lesson = {
   icon: string;
   questions: Question[];
 };
+
+export interface StepsProps {
+  Qn: number;
+  questionIndex: number;
+  courseColor: Color;
+  setQuestionIndex: (a: number) => void;
+}
