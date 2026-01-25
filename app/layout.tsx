@@ -20,7 +20,7 @@ export default function RootLayout({
       <body className={`overflow-hidden ${iranSansDn.className} `}>
         <LessonsInitializer />
         <main className="max-w-xl mx-auto h-dvh min-h-dvh outline outline-gray-300">
-          <header className="w-full h-14 shadow shadow-primary-light px-4 z-10 relative">
+          <header className="w-full h-14 shadow shadow-primary-light px-4 z-50 relative">
             <Link href='/' className="h-full w-fit gap-2  flex items-center ">
               <LogoIcon className="fill-primary w-5" />
               <h1 className="text-lg font-bold text-primary">کیدزلــــرن</h1>
