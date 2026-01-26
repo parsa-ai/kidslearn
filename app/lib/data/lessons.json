@@ -39,7 +39,7 @@
     "id": "colors-basic",
     "title": "رنگ‌های پایه",
     "ageMin": 3,
-    "ageMax": 6,
+    "ageMax": 3,
     "icon": "🎨",
     "questions": [
       {
@@ -111,7 +111,7 @@
     "id": "body-parts",
     "title": "اعضای بدن",
     "ageMin": 4,
-    "ageMax": 8,
+    "ageMax": 7,
     "icon": "🧍",
     "questions": [
       {
