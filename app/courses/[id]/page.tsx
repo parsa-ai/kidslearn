@@ -6,7 +6,7 @@ import Link from "next/link"
 import { ChevronLeft } from "lucide-react"
 import { useLessonsStore } from "@/app/context/useLessonsStore"
 import { AgesList } from "@/app/lib/data/AgesList"
-import { ModalType} from "@/app/lib/Types"
+import { ModalType } from "@/app/lib/Types"
 import Steps from "@/app/components/pages/courseSingle/Steps"
 import Modal from "@/app/components/pages/courseSingle/Modal"
 
@@ -81,18 +81,20 @@ export default function CoursePage() {
 
   return (
     <article className="cnt py-6 h-full flex flex-col gap-5">
-      {modalMode !== "none" && (
-        <Modal
-          modalMode={modalMode}
-          setModalMode={setModalMode}
-          isLast={questionIndex === lesson.questions.length - 1}
-          onNext={() => setQuestionIndex((i) => i + 1)}
-          correctAnswer={lastCorrectAnswer}
-          totalCorrect={correctAnswer.current.filter((i) => i === 1).length}
-          totalQuestions={lesson.questions.length}
-        />
-      )}
-
+      <AnimatePresence mode="wait">
+        {modalMode !== "none" && (
+          <Modal
+            key={modalMode}
+            modalMode={modalMode}
+            setModalMode={setModalMode}
+            isLast={questionIndex === lesson.questions.length - 1}
+            onNext={() => setQuestionIndex((i) => i + 1)}
+            correctAnswer={lastCorrectAnswer}
+            totalCorrect={correctAnswer.current.filter((i) => i === 1).length}
+            totalQuestions={lesson.questions.length}
+          />
+        )}
+      </AnimatePresence>
       <header className="flex justify-between items-center">
         <h1 className="text-xl font-bold text-primary-dark/80 flex items-center gap-3">
           <span>{lesson.icon}</span>

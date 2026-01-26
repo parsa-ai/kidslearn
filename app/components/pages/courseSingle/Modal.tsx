@@ -1,9 +1,10 @@
+"use client"
 import { Color, ModalType } from "@/app/lib/Types"
-import { useRouter } from "next/router"
 import Div from "../../ui/Div"
 import Button from "../../ui/Button"
 import { ChevronLeft } from "lucide-react"
-
+import { useRouter } from "next/navigation"
+import { motion } from "motion/react"
 export default function Modal({
   modalMode,
   setModalMode,
@@ -62,7 +63,10 @@ export default function Modal({
   }
 
   return (
-    <div className={`${BaseStyle} ${ModeStyle[modalMode].bg}`}>
+    <motion.div 
+    initial={{opacity:0}}
+    animate={{opacity:1}}
+    className={`${BaseStyle} ${ModeStyle[modalMode].bg}`}>
       <Div
         className="w-full max-w-md rounded-3xl! cnt py-6 px-4 flex flex-col gap-4 items-center "
         color={ModeStyle[modalMode].color}
@@ -93,11 +97,10 @@ export default function Modal({
           isActive="active"
           onClick={handleClose}
           className="flex underline text-xl items-center"
-
         >
           {modalMode === "done" ? "بازگشت به خانه" : modalMode === "corect" ? "عالی بود، ادامه بده" : "اشکال نداره، ادامه بده"} <ChevronLeft />
         </Button>
       </Div>
-    </div>
+    </motion.div>
   )
 }
