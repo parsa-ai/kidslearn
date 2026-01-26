@@ -4,14 +4,14 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import { useParams } from "next/navigation"
 import Link from "next/link"
 import { ChevronLeft } from "lucide-react"
-
-import Button from "@/app/components/ui/Button"
-import Div from "@/app/components/ui/Div"
 import { useLessonsStore } from "@/app/context/useLessonsStore"
 import { AgesList } from "@/app/lib/data/AgesList"
-import { ModalType } from "@/app/lib/Types"
+import { ModalType} from "@/app/lib/Types"
 import Steps from "@/app/components/pages/courseSingle/Steps"
 import Modal from "@/app/components/pages/courseSingle/Modal"
+
+import { AnimatePresence } from "motion/react"
+import CourseCard from "@/app/components/pages/courseSingle/CourseCard"
 
 export default function CoursePage() {
   const { id } = useParams<{ id: string }>()
@@ -107,35 +107,20 @@ export default function CoursePage() {
         </Link>
       </header>
 
-      <div className="flex flex-col justify-between h-full gap-6">
+      <div className="flex flex-col justify-between h-full gap-6 overflow-hidden p-1">
         <Steps
           Qn={lesson.questions.length}
           questionIndex={questionIndex}
           courseColor={courseColor}
           setQuestionIndex={setQuestionIndex} />
-        <Div
-          color={courseColor}
-          className="rounded-3xl! flex flex-col justify-between px-4 py-6 flex-1"
-        >
-          <p className="text-right font-bold text-3xl">
-            {question.q}
-          </p>
-
-          <ul className="flex flex-col gap-4">
-            {question.choices.map((choice, i) => (
-              <li key={i}>
-                <Button
-                  color={courseColor}
-                  isActive="active"
-                  className="w-full h-12 text-2xl"
-                  onClick={() => handelSubmit(i)}
-                >
-                  {choice}
-                </Button>
-              </li>
-            ))}
-          </ul>
-        </Div>
+        <AnimatePresence mode="wait">
+          <CourseCard
+            key={question.q}
+            courseColor={courseColor}
+            question={question}
+            handelSubmit={handelSubmit}
+          />
+        </AnimatePresence>
       </div>
     </article>
   )
