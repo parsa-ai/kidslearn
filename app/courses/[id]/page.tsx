@@ -36,7 +36,7 @@ export default function CoursePage() {
 
   useEffect(() => {
     resetLessonStars(id)
-  }, [])
+  }, [resetLessonStars , id])
 
 
   function handelSubmit(choeseI: number) {

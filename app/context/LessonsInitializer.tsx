@@ -11,13 +11,14 @@ export function LessonsInitializer() {
   const searchTitle = useLessonsStore((s) => s.searchTitle)
   const selectedAge = useLessonsStore((s) => s.selectedAge)
   const setSorted = useLessonsStore((s) => s.setSorted)
+  const getSorted = useSortingLessons()
 
   useEffect(() => {
     setLessons(lessonsJson);
-  }, []);
+  }, [setLessons]);
   useEffect(() => {
-    const sorted = useSortingLessons(lessons, searchTitle, selectedAge)
+    const sorted = getSorted(lessons, searchTitle, selectedAge)
     setSorted(sorted)
-  }, [searchTitle, selectedAge,lessons]);
+  }, [searchTitle, selectedAge, lessons, setSorted, getSorted]);
   return null;
 }
