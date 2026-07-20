@@ -1,28 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { Lesson } from "../lib/Types";
-type StarsMap = Record<string, number>;
-
-type LessonsState = {
-  lessons: Lesson[];
-  sorted: Lesson[];
-
-  searchTitle: string;
-  selectedAge: number;
-
-  stars: StarsMap;
-
-  setLessons: (lessons: Lesson[]) => void;
-  setSorted: (lessons: Lesson[]) => void;
-
-  setSearchTitle: (value: string) => void;
-  setSelectedAge: (age: number) => void;
-
-  getLessonStars: (lessonId: string) => number;
-  addStar: (lessonId: string , quantity : number) => void;
-  resetLessonStars: (lessonId: string) => void;
-
-};
+import { LessonsState } from "../lib/Types";
 
 export const useLessonsStore = create<LessonsState>()(
   persist(
@@ -31,7 +9,7 @@ export const useLessonsStore = create<LessonsState>()(
       sorted: [],
 
       searchTitle: "",
-      selectedAge: 0, 
+      selectedAge: 0,
 
       stars: {},
 
@@ -45,7 +23,7 @@ export const useLessonsStore = create<LessonsState>()(
         return get().stars[lessonId] ?? 0;
       },
 
-      addStar: (lessonId , quantity) =>
+      addStar: (lessonId, quantity) =>
         set((state) => ({
           stars: {
             ...state.stars,
@@ -63,7 +41,7 @@ export const useLessonsStore = create<LessonsState>()(
 
     }),
     {
-      name: "kidslearn-stars", 
+      name: "kidslearn-stars",
       partialize: (state) => ({
         stars: state.stars,
       }),

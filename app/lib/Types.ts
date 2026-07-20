@@ -3,6 +3,29 @@ export type IsActive = "active" | "deactive";
 export type ModalType = "done" | "incorect" | "corect" | "none";
 
 
+export type StarsMap = Record<string, number>;
+
+export type LessonsState = {
+  lessons: Lesson[];
+  sorted: Lesson[];
+
+  searchTitle: string;
+  selectedAge: number;
+
+  stars: StarsMap;
+
+  setLessons: (lessons: Lesson[]) => void;
+  setSorted: (lessons: Lesson[]) => void;
+
+  setSearchTitle: (value: string) => void;
+  setSelectedAge: (age: number) => void;
+
+  getLessonStars: (lessonId: string) => number;
+  addStar: (lessonId: string, quantity: number) => void;
+  resetLessonStars: (lessonId: string) => void;
+
+};
+
 export interface Colors {
   blue: string,
   orange: string,
